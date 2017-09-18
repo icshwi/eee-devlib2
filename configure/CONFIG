@@ -1,0 +1,26 @@
+# EPICS_MODULE_NAME : the EPICS community MODULE name
+# For example, https://github.com/epics-module/devlibs
+# devlib2 is EPICS_MODULE_NAME
+EPICS_MODULE_NAME=devlib2
+
+# EPICS_MODULE_TAG : Tag version, which we would like to 
+# install in ESS EPICS Environment (ESS)
+EPICS_MODULE_TAG=2.9
+
+# EPICS_MODULE_PATH : USUALLY a directory, which we are cloning in
+# the current working directory. However, it should be matched with SRC_TOP
+# in ESS_MODULE_MAKEFILE
+EPICS_MODULE_PATH=$(EPICS_MODULE_NAME)
+
+# EPICS_MODULE_VERSION : EEE LIBVERSION, which we can use the module version
+# and it will be used in iocsh script with require command
+ESS_MODULE_VERSION=2.9.0
+
+# ESS_MODULE_MAKEFILE : a strange and additional Makefile for EPICS_MODULE_NAME
+# in order to build and install for EEE
+ESS_MODULE_MAKEFILE=$(EPICS_MODULE_NAME).eee.Makefile
+
+# ESS_MODULE_PROJECT_NAME : the installation directory, and it will be used in
+# iocsh script with require command
+ESS_MODULE_PROJECT_NAME=$(EPICS_MODULE_NAME)-han
+

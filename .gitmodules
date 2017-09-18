@@ -2,4 +2,4 @@
 	path = devlib2
 	url = https://github.com/epics-modules/devlib2
 	branch = master
-	ignore = dirty 
+	ignore = dirty

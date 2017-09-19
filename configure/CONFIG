@@ -22,5 +22,5 @@ ESS_MODULE_MAKEFILE=$(EPICS_MODULE_NAME).eee.Makefile
 
 # ESS_MODULE_PROJECT_NAME : the installation directory, and it will be used in
 # iocsh script with require command
-ESS_MODULE_PROJECT_NAME=$(EPICS_MODULE_NAME)-test
+ESS_MODULE_PROJECT_NAME=$(EPICS_MODULE_NAME)-timo
 

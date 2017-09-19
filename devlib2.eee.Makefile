@@ -10,34 +10,40 @@ EXCLUDE_VERSIONS=3.14
 
 # SRC_TOP : Local Variable to represent where all source files are located.
 #           Input variable of the main Makefile
+# All source codes are defined here, are defined in Makefile in each main Applcations with 
+# Library IOC only. I don't add PRODUCT in this makefile. Still I have no idea how I implement
+# the PRODUCT binary within EEE
 
 
-# USR_INCLUDES += -I$(SRC_TOP)/common/
-# USR_INCLUDES += -I$(SRC_TOP)/pciApp/
-# USR_INCLUDES += -I$(SRC_TOP)/vmeApp/
+PCIAPP = $(SRC_TOP)/pciApp
+USR_INCLUDES += -I$(PCIAPP)
+
+HEADERS += $(PCIAPP)/devLibPCI.h
+HEADERS += $(PCIAPP)/devLibPCIImpl.h
 
 
-HEADERS += $(SRC_TOP)/pciApp/devLibPCI.h
-HEADERS += $(SRC_TOP)/pciApp/devLibPCIImpl.h
+SOURCES += $(wildcard $(PCIAPP)/devLib*.c)
+SOURCES += $(PCIAPP)/pcish.c
+SOURCES_Linux += $(PCIAPP)/os/Linux/devLibPCIOSD.c
+
+DBDS += $(PCIAPP)/epicspci.dbd
 
 
-SOURCES += $(wildcard $(SRC_TOP)/pciApp/devLib*.c)
-SOURCES += $(SRC_TOP)/pciApp/pcish.c
+VMEAPP = $(SRC_TOP)/vmeApp
+USR_INCLUDES += -I$(VMEAPP)
 
-SOURCES_Linux   += $(SRC_TOP)/pciApp/os/Linux/devLibPCIOSD.c
+HEADERS += $(VMEAPP)/devcsr.h
+HEADERS += $(VMEAPP)/vmedefs.h
+
+SOURCES += $(VMEAPP)/devcsr.c
+SOURCES += $(VMEAPP)/iocreg.c
+SOURCES += $(VMEAPP)/vmesh.c
+SOURCES += $(VMEAPP)/devlib_compat.c
+
+DBDS    += $(VMEAPP)/epicsvme.dbd
 
 
-HEADERS += $(SRC_TOP)/vmeApp/devcsr.h
-HEADERS += $(SRC_TOP)/vmeApp/vmedefs.h
 
-SOURCES += $(SRC_TOP)/vmeApp/devcsr.c
-SOURCES += $(SRC_TOP)/vmeApp/iocreg.c
-SOURCES += $(SRC_TOP)/vmeApp/vmesh.c
-SOURCES += $(SRC_TOP)/vmeApp/devlib_compat.c
-
-
-DBDS += $(SRC_TOP)/pciApp/epicspci.dbd
-DBDS += $(SRC_TOP)/vmeApp/epicsvme.dbd
 
 
 #include ${HOME}/ics_gitsrc/m-epics-environment/scripts/module.Makefile

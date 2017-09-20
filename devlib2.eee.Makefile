@@ -1,9 +1,9 @@
-# This makefile is only valid for Tag 2.9, not for master branch
-# with from EPICS BASE 3.15 
-
+# This makefile is only valid for COMMUNITY Tag 2.9  with > EPICS BASE 3.15.4 
+#
 # LIBVERSION is overwritten by the python script in module.Makefile, so it didn't work
 # LIBVERSION=2.9.0
 
+EXCLUDE_ARCHS += eldk
 STARTUPS=-none-
 EXCLUDE_VERSIONS=3.14
 
@@ -15,12 +15,10 @@ EXCLUDE_VERSIONS=3.14
 # the PRODUCT binary within EEE
 
 
-PCIAPP = $(SRC_TOP)/pciApp
-USR_INCLUDES += -I$(PCIAPP)
+PCIAPP:= $(SRC_TOP)/pciApp
 
 HEADERS += $(PCIAPP)/devLibPCI.h
 HEADERS += $(PCIAPP)/devLibPCIImpl.h
-
 
 SOURCES += $(wildcard $(PCIAPP)/devLib*.c)
 SOURCES += $(PCIAPP)/pcish.c
@@ -29,8 +27,7 @@ SOURCES_Linux += $(PCIAPP)/os/Linux/devLibPCIOSD.c
 DBDS += $(PCIAPP)/epicspci.dbd
 
 
-VMEAPP = $(SRC_TOP)/vmeApp
-USR_INCLUDES += -I$(VMEAPP)
+VMEAPP:= $(SRC_TOP)/vmeApp
 
 HEADERS += $(VMEAPP)/devcsr.h
 HEADERS += $(VMEAPP)/vmedefs.h
@@ -44,9 +41,6 @@ DBDS    += $(VMEAPP)/epicsvme.dbd
 
 
 
-
-
-#include ${HOME}/ics_gitsrc/m-epics-environment/scripts/module.Makefile
-
-include ${EPICS_ENV_PATH}/module.Makefile
-
+WHEREAMI:=$(dir $(lastword $(MAKEFILE_LIST)))
+include ${WHEREAMI}/../m-epics-environment/scripts/module.Makefile
+#include ${EPICS_ENV_PATH}/module.Makefile

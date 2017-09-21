@@ -84,12 +84,14 @@ init:
 env:
 	@echo ""
 	@echo "EPICS_BASE             : "$(EPICS_BASE)
+
 	@echo "EPICS_MODULE_NAME      : "$(EPICS_MODULE_NAME)
 	@echo "EPICS_MODULE_TAG       : "$(EPICS_MODULE_TAG)
-	@echo "ESS_MODULE_VERSION     : "$(ESS_MODULE_VERSION)
+	@echo "EPICS_MODULE_SRC_PATH  : "$(EPICS_MODULE_SRC_PATH)
 	@echo "ESS_MODULE_MAKEFILE    : "$(ESS_MODULE_MAKEFILE)
-	@echo "ESS_MODULE_PROJECTNAME : "$(ESS_MODULE_PROJECT_NAME)
-	@echo "EPICS_MODULE_PATH      : "$(EPICS_MODULE_PATH)
+	@echo "PROJECT                : "$(PROJECT)
+	@echo "LIBVERSION             : "$(LIBVERSION)
+
 	@echo ""
 	@echo "EPICS_BASES_PATH       : "$(EPICS_BASES_PATH)
 	@echo "EPICS_MODULES_PATH     : "$(EPICS_MODULES_PATH)
